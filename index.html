@@ -1,32 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de tareas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" type="text/javascript" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="./style.css">
+    <title> Lista To-Do</title>
 </head>
 <body>
-    <div class="list roundBorder">
-        <div class="date">
-            <div class="dateLeft">
-                <div id="dateNumber"></div>
-                <div>
-                    <div id="dateMonth"></div>
-                    <div id="dateYear"></div>
-                </div>
-            </div>
-            <div id="dateText"></div>
-        </div>
-        <form onsubmit="addNewTask(event)" >
-            <input type="text" name="taskText" autocomplete="off" placeholder="Nueva tarea" class="roundBorder">
-            <button type="submit" class="addTaskButton">+</button>
-            <button type="button" class="orderButton roundBorder" onclick="renderOrderedTasks()">Ordenar</button>
-        </form>
-        <div id="tasksContainer"></div>
-    </div>
+    <div class="principal">
+		<div class="wrap">
+			<form class="formulario" action="">
+				<input type="text" id="tareaInput" placeholder="Agrega tu tarea">
+				<input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
+			</form>
+		</div>
+	</div>
+
+	<div class="tareas">
+		<div class="wrap">
+			<ul class="lista" id="lista">
+				<li><a href="#">1 Abrir todos los trabajos</a></li>
+				<li><a href="#">2 Hacer las correcciones</a></li>
+				<li><a href="#">3 Llorar viendo los trabajos ESSSSPPPETACULARES</a></li>
+                <li><a href="#">4 Pedir una milanga con fritas</a></li>
+				<li><a href="#">5 dormir</a></li>
+				<li><a href="#">6 seguir durmiendo</a></li>
+                <li><a href="#">7 que los mellis me despierten a la mitad de la noche</a></li>
+				<li><a href="#">8 llevar a los pibes al jardin</a></li>
+				<li><a href="#">9 disfrutar de la paz</a></li>
+                <li><a href="#">10 ir al super</a></li>
+			</ul>
+		</div>
+        <script src="/1/script.js"></script>
 </body>
 </html>

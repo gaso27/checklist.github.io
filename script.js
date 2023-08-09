@@ -1,48 +1,60 @@
-// Info date
-const dateNumber = document.getElementById('dateNumber');
-const dateText = document.getElementById('dateText');
-const dateMonth = document.getElementById('dateMonth');
-const dateYear = document.getElementById('dateYear');
+(function(){
+	// Variables
+	var lista = document.getElementById("lista"),
+		tareaInput = document.getElementById("tareaInput"),
+		btnNuevaTarea = document.getElementById("btn-agregar");
 
-// Tasks Container
-const tasksContainer = document.getElementById('tasksContainer');
+	// Funciones
+	var agregarTarea = function(){
+		var tarea = tareaInput.value,
+			nuevaTarea = document.createElement("li"),
+			enlace = document.createElement("a"),
+			contenido = document.createTextNode(tarea);
 
-const setDate = () => {
-    const date = new Date();
-    dateNumber.textContent = date.toLocaleString('es', { day: 'numeric' });
-    dateText.textContent = date.toLocaleString('es', { weekday: 'long' });
-    dateMonth.textContent = date.toLocaleString('es', { month: 'short' });
-    dateYear.textContent = date.toLocaleString('es', { year: 'numeric' });
-};
+		if (tarea === "") {
+			tareaInput.setAttribute("placeholder", "Agrega una tarea valida");
+			tareaInput.className = "error";
+			return false;
+		}
 
-const addNewTask = event => {
-    event.preventDefault();
-    const {value} = event.target.taskText;
-    if(!value) return;
-    const task = document.createElement('div');
-    task.classList.add('task', 'roundBorder');
-    task.addEventListener('click', changeTaskState);
-    task.textContent = value;
-    tasksContainer.prepend(task);
-    event.target.reset();
-};
+		// Agregar el contenido al enlace
+		enlace.appendChild(contenido);
+		// establecer un atributo href
+		enlace.setAttribute("href", "#");
+		// Agrergar el enlace (a) a la nueva tarea (li)
+		nuevaTarea.appendChild(enlace);
+		// Agregar la nueva tarea a la lista
+		lista.appendChild(nuevaTarea);
 
-const changeTaskState = event => {
-    event.target.classList.toggle('done');
-    alert ('¡¡Felicitaciones! completaste la tarea!!');
-};
+		tareaInput.value = "";
 
-const order = () => {
-    const done = [];
-    const toDo = [];
-    tasksContainer.childNodes.forEach( el => {
-        el.classList.contains('done') ? done.push(el) : toDo.push(el)
-    })
-    return [...toDo, ...done];
-};
+		for (var i = 0; i <= lista.children.length -1; i++) {
+			lista.children[i].addEventListener("click", function(){
+				this.parentNode.removeChild(this);
+			});
+		}
 
-const renderOrderedTasks = () => {
-    order().forEach(el => tasksContainer.appendChild(el))
-};
+	};
+	var comprobarInput = function(){
+		tareaInput.className = "";
+		teareaInput.setAttribute("placeholder", "Agrega tu tarea");
+	};
 
-setDate();
+	var eleminarTarea = function(){
+		this.parentNode.removeChild(this);
+        alert ('¡Felictaciones, completaste la tarea!')
+	};
+
+	// Eventos
+
+	// Agregar Tarea
+	btnNuevaTarea.addEventListener("click", agregarTarea);
+
+	// Comprobar Input
+	tareaInput.addEventListener("click", comprobarInput);
+
+	// Borrando Elementos de la lista
+	for (var i = 0; i <= lista.children.length -1; i++) {
+		lista.children[i].addEventListener("click", eleminarTarea);
+	}
+}());
