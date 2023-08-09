@@ -29,6 +29,7 @@ const addNewTask = event => {
 
 const changeTaskState = event => {
     event.target.classList.toggle('done');
+    alert ('¡¡Felicitaciones! completaste la tarea!!');
 };
 
 const order = () => {
